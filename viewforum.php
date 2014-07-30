@@ -34,6 +34,11 @@ $sort_days	= request_var('st', $default_sort_days);
 $sort_key	= request_var('sk', $default_sort_key);
 $sort_dir	= request_var('sd', $default_sort_dir);
 
+//-- mod : Filter by Cities ------------------------------------------------------------
+//-- add
+$city_id = request_var('city', 0);
+//-- fin mod : Filter by Cities --------------------------------------------------------
+
 // Check if the user has actually sent a forum ID with his/her request
 // If not give them a nice error page.
 if (!$forum_id)
@@ -255,6 +260,19 @@ else
 	$sql_limit_time = '';
 }
 
+if ($city_id)
+{
+	$sql = 'SELECT COUNT(topic_id) AS num_topics
+		FROM ' . TOPICS_TABLE . "
+		WHERE forum_id = $forum_id
+			AND ((topic_type <> " . POST_GLOBAL . " AND city_id = $city_id)
+				OR topic_type = " . POST_ANNOUNCE . ")
+		" . (($auth->acl_get('m_approve', $forum_id)) ? '' : 'AND topic_approved = 1');
+	$result = $db->sql_query($sql);
+	$topics_count = (int) $db->sql_fetchfield('num_topics');
+	$db->sql_freeresult($result);
+}
+
 // Make sure $start is set to the last page if it exceeds the amount
 if ($start < 0 || $start > $topics_count)
 {
@@ -450,7 +468,6 @@ else
 
 //-- mod : Filter by Cities ------------------------------------------------------------
 //-- add
-$city_id = isset($_POST['city']) ? $_POST['city'] : '';
 $city_query = !empty($city_id) && is_numeric($city_id) ? "AND t.city_id = $city_id" : '';
 //-- fin mod : Filter by Cities --------------------------------------------------------
 
@@ -563,8 +580,13 @@ if ($s_display_active)
 // We need to readd the local announcements to the forums total topic count, otherwise the number is different from the one on the forum list
 $total_topic_count = $topics_count + sizeof($announcement_list) - sizeof($global_announce_list);
 
+//-- mod : Filter by Cities ------------------------------------------------------------
+//-- add
+$city_string_append = !empty($city_id) && is_numeric($city_id) ? "&city=$city_id" : '';
+//-- fin mod : Filter by Cities --------------------------------------------------------
+
 $template->assign_vars(array(
-	'PAGINATION'	=> generate_pagination(append_sid("{$phpbb_root_path}viewforum.$phpEx", "f=$forum_id" . ((strlen($u_sort_param)) ? "&amp;$u_sort_param" : '')), $topics_count, $config['topics_per_page'], $start),
+	'PAGINATION'	=> generate_pagination(append_sid("{$phpbb_root_path}viewforum.$phpEx", "f=$forum_id" . "$city_string_append" . ((strlen($u_sort_param)) ? "&amp;$u_sort_param" : '')), $topics_count, $config['topics_per_page'], $start),
 	'PAGE_NUMBER'	=> on_page($topics_count, $config['topics_per_page'], $start),
 	'TOTAL_TOPICS'	=> ($s_display_active) ? false : (($total_topic_count == 1) ? $user->lang['VIEW_FORUM_TOPIC'] : sprintf($user->lang['VIEW_FORUM_TOPICS'], $total_topic_count)))
 );

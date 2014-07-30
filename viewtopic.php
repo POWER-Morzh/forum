@@ -618,6 +618,22 @@ if (!empty($_EXTRA_URL))
 	}
 }
 
+//-- mod : Filter by Cities ------------------------------------------------------------
+//-- add
+$city_id = $topic_data['city_id'];
+if($city_id) {
+	$citysql = 'SELECT city_name
+		FROM ' . "den_city" . "
+		WHERE city_id = $city_id";
+	$cityresult = $db->sql_query($citysql);
+	$city_name = $db->sql_fetchfield('city_name');
+	$db->sql_freeresult($cityresult);
+//   $city_name = $topic_data['city_id'];
+} else {
+  $city_name = '';
+}
+//-- fin mod : Filter by Cities --------------------------------------------------------
+
 // Send vars to template
 $template->assign_vars(array(
 	'FORUM_ID' 		=> $forum_id,
@@ -627,7 +643,7 @@ $template->assign_vars(array(
 	'TOPIC_TITLE' 	=> $topic_data['topic_title'],
 //-- mod : Filter by Cities ------------------------------------------------------------
 //-- add
-  'CITY'   => $topic_data['city_id'],
+  'CITY'   => $city_name,
 //-- fin mod : Filter by Cities --------------------------------------------------------
 	'TOPIC_POSTER'	=> $topic_data['topic_poster'],
 
