@@ -1,0 +1,62 @@
+		<!-- IF SCRIPT_NAME == index and not S_ADMIN_AUTH or SCRIPT_NAME == viewforum or SCRIPT_NAME == viewtopic-->
+			</div><!-- right-content end -->
+			<div id="sidebar">
+				<!-- INCLUDE sidebar.html -->
+			</div>
+		<!-- ELSE --><!-- ENDIF -->	
+
+  	</div><!-- #page-body end -->
+</div><!-- #wrapcentre end -->
+<div class="clear"></div>
+
+<div id="wrap-footer"> 
+	<div id="page-footer"> 
+		<div class="footer-l">
+
+		<div class="footer-block about"><!-- footer-block "About us" start -->
+
+	 	</div><!-- footer-block "About us" end --> 
+
+	  		<div class="footer-block"><!-- footer-block "Useful Links" start -->
+
+	            <h4>Useful Links</h4>
+	              <a href="{U_INDEX}">{L_INDEX}</a>
+	              <a href="{U_FAQ}">{L_FAQ}</a>	
+	              <!-- IF S_DISPLAY_MEMBERLIST -->
+                  <a href="{U_MEMBERLIST}">{L_MEMBERLIST}</a><!-- ENDIF --> 		
+	                 
+
+	    	</div><!-- footer-block "Useful Links" end -->
+	    	
+	  </div><!-- footer-l end -->
+
+	  
+	</div><!-- #page-footer end -->	
+</div><!-- #wrap-footer end -->	
+
+<div id="wrap-copyrights">  
+  	<div id="page-copyrights">
+
+  		<div>			
+							<!-- IF DEBUG_OUTPUT --><br /><bdo dir="ltr">[ {DEBUG_OUTPUT} ]</bdo><!-- ENDIF -->
+			</div>	
+
+  	</div><!-- #page-copyrights end -->	
+</div><!-- #wrap-copyrights end -->
+<div>
+ <a href="#" class="go-top"><i class="icon-angle-up"></i></a>
+</div>
+
+<!-- JavaScript -->
+<script type="text/javascript" src="{T_THEME_PATH}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{T_THEME_PATH}/js/selectivizr-min.js"></script>
+<script type="text/javascript" src="{T_THEME_PATH}/js/respond.min.js"></script>
+<script type="text/javascript" src="{T_THEME_PATH}/js/custom.js"></script>
+
+<div style="display:none;">
+	<a id="bottom" name="bottom" accesskey="z"></a>
+	<!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
+</div>
+
+</body>
+</html>
