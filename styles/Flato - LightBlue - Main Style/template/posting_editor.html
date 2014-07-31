@@ -106,22 +106,21 @@
 		<dd><input type="text" name="subject" id="subject" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="2" value="{SUBJECT}{DRAFT_SUBJECT}" class="inputbox autowidth" /></dd>
 	</dl>
 <!-- mod : Filter by Cities -->
-  <!-- IF S_ENABLE_CITY_FILTER --><!-- IF S_FIRST_POST or not CITY -->
+  <!-- IF S_ENABLE_CITY_FILTER -->
+    <!-- IF S_FIRST_POST or not CITY -->
     <dl style="clear: left;">
-  		
-
       <div class="city-filter-box">
-          <dt><label for="city">City:</label></dt>
-            <div id="city_chosen" style="float: left;"></div>
-            <div class="inside-city-filter-box">
-              <input class="inputbox search tiny" type="text" name="filter_keywords" id="filter_keywords" onkeyup="searchSuggest();" autocomplete="off" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="3" value="{CITY}" />
-              <input id="city_hidden" type="hidden" name="city" value="">
-            </div>
-        <div id="city_suggest">
+        <dt><label for="city">City:</label></dt>
+        <div id="city_chosen" style="float: left;"><!-- IF CITY_EDIT_MODE --><a onclick="ResetCityFilter()">{CITY_NAME}</a><!-- ENDIF --></div>
+        <div class="inside-city-filter-box">
+          <input <!-- IF CITY_EDIT_MODE -->style="display: none;"<!-- ENDIF --> class="inputbox search tiny" type="text" name="filter_keywords" id="filter_keywords" onkeyup="searchSuggest();" autocomplete="off" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="3" value="{CITY}" />
+          <input id="city_hidden" type="hidden" name="city" value="{CITY}">
         </div>
+        <div <!-- IF CITY_EDIT_MODE -->style="display: none;"<!-- ENDIF --> id="city_suggest"></div>
       </div>
   	</dl>
-  <!-- ENDIF --><!-- ENDIF -->
+    <!-- ENDIF -->
+  <!-- ENDIF -->
 <!-- fin mod : Filter by Cities -->
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 		<!-- DEFINE $CAPTCHA_TAB_INDEX = 3 -->

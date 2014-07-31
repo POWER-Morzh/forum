@@ -1437,7 +1437,21 @@ if (isset($captcha) && $captcha->is_solved() !== false)
 $form_enctype = (@ini_get('file_uploads') == '0' || strtolower(@ini_get('file_uploads')) == 'off' || !$config['allow_attachments'] || !$auth->acl_get('u_attach') || !$auth->acl_get('f_attach', $forum_id)) ? '' : ' enctype="multipart/form-data"';
 add_form_key('posting');
 
-
+//-- mod : Filter by Cities ------------------------------------------------------------
+//-- add
+$city_id = $post_data['city_id'];
+if($city_id) {
+	$citysql = 'SELECT city_name
+		FROM ' . "den_city" . "
+		WHERE city_id = $city_id";
+	$cityresult = $db->sql_query($citysql);
+	$city_name = $db->sql_fetchfield('city_name');
+	$db->sql_freeresult($cityresult);
+//   $city_name = $topic_data['city_id'];
+} else {
+  $city_name = '';
+}
+//-- fin mod : Filter by Cities --------------------------------------------------------
 // Start assigning vars for main posting page ...
 $template->assign_vars(array(
 	'L_POST_A'					=> $page_title,
@@ -1452,11 +1466,10 @@ $template->assign_vars(array(
 	'SUBJECT'				=> $post_data['post_subject'],
 //-- mod : Filter by Cities ------------------------------------------------------------
 //-- add
-  'CITY'   => $post_data['city_id'],
-//-- fin mod : Filter by Cities --------------------------------------------------------
-//-- mod : Filter by Cities ------------------------------------------------------------
-//-- add
+  'CITY'   => $city_id,
+  'CITY_NAME'   => $city_name,
   'S_ENABLE_CITY_FILTER'   => $post_data['enable_city_filter'],
+  'CITY_EDIT_MODE'      => $mode == 'edit',
 //-- fin mod : Filter by Cities --------------------------------------------------------
 	'MESSAGE'				=> $post_data['post_text'],
 	'BBCODE_STATUS'			=> ($bbcode_status) ? sprintf($user->lang['BBCODE_IS_ON'], '<a href="' . append_sid("{$phpbb_root_path}faq.$phpEx", 'mode=bbcode') . '">', '</a>') : sprintf($user->lang['BBCODE_IS_OFF'], '<a href="' . append_sid("{$phpbb_root_path}faq.$phpEx", 'mode=bbcode') . '">', '</a>'),
