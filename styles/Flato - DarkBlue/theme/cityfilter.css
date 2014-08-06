@@ -1,0 +1,13 @@
+/* City Filter */
+
+.city-filter-box {
+  clear: both;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.city-filter-box #filter_keywords {
+  height: 20px;
+  width: 220px;
+}
