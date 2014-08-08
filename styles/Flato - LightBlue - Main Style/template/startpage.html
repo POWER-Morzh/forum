@@ -140,7 +140,12 @@
 					<p>Musikunterricht:<br />schräge Töne adé</p>
 				</a>
 			</article>
-
+      <article style="opacity: 1;" class="text-center beethoven">
+        <a href="http://www.classiclike.com/">
+          <img id="beethoven_img" class="img-responsive" alt="" title="" src="startpage/beethoven-1.jpg">
+          <p>Musikersuche/-profil:<br />für alle Anlässe(kommt in kürze)</p>
+        </a>
+      </article>
 			<article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=14">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-darkblue.gif">
@@ -178,6 +183,7 @@
 	$(document).ready(function(){
 		$('article.auge').mouseenter(function(){
 			$('article.auge').css('opacity','0.3');
+      $('article.beethoven').css('opacity','0.3');
 			$(this).css('opacity','1');
 			$(this).find('p').addClass('highs');
       var img_name =   $(this).find('img').attr("src");
@@ -186,17 +192,21 @@
 		})
 		$('article.auge').mouseleave(function(){
 			$('article.auge').css('opacity','1');
+      $('article.beethoven').css('opacity','1');
 			$('p').removeClass('highs');
       var img_name =   $(this).find('img').attr("src");
       img_name = img_name.substring(0, img_name.length-9);
       $(this).find('img').attr("src", img_name + ".gif");
-      $('#beehtoven_img').attr('src','startpage/beethoven-1.jpg');
 		})
-    $('#beehtoven_img').mouseenter(function(){
-      $('#beehtoven_img').attr('src','startpage/beethoven-3.jpg');
+    $('article.beethoven').mouseenter(function(){
+      $('article.auge').css('opacity','0.3');
+      $(this).find('p').addClass('highs');
+      $('#beethoven_img').attr('src','startpage/beethoven-3.jpg');
     })
-    $('#beehtoven_img').mouseleave(function(){
-      $('#beehtoven_img').attr('src','startpage/beethoven-1.jpg');
+    $('article.beethoven').mouseleave(function(){
+      $('article.auge').css('opacity','1');
+      $('p').removeClass('highs');
+      $('#beethoven_img').attr('src','startpage/beethoven-1.jpg');
     })
 
 	})
