@@ -182,7 +182,7 @@ $lang = array_merge($lang, array(
 	'EXTENSION'							=> 'Dateierweiterung',
 	'EXTENSION_DISABLED_AFTER_POSTING'	=> 'Die Dateierweiterung <strong>%s</strong> wurde deaktiviert und kann nicht länger angezeigt werden.',
 
-	'FAQ'					=> 'FAQ',
+	'FAQ'					=> 'Hilfe',
 	'FAQ_EXPLAIN'			=> 'Häufig gestellte Fragen',
 	'FILENAME'				=> 'Dateiname',
 	'FILESIZE'				=> 'Größe',

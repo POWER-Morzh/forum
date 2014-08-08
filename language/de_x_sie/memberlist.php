@@ -56,10 +56,10 @@ $lang = array_merge($lang, array(
 	'DEST_LANG'				=> 'Sprache',
 	'DEST_LANG_EXPLAIN'		=> 'Wählen Sie — sofern verfügbar — eine passende Sprache aus, in der der Empfänger die Nachricht erhalten soll.',
 
-	'EMAIL_BODY_EXPLAIN'	=> 'Diese Nachricht wird als reiner Text verschickt, verwenden Sie daher kein HTML oder BBCode. Als Antwort-Adresse für die E-Mail wird Ihre E-Mail-Adresse angegeben.',
+	'EMAIL_BODY_EXPLAIN'	=> 'Als Antwort-Adresse für die E-Mail wird Ihre E-Mail-Adresse angegeben.',
 	'EMAIL_DISABLED'		=> 'Leider wurden alle E-Mail-Funktionen deaktiviert.',
 	'EMAIL_SENT'			=> 'Die E-Mail wurde gesendet.',
-	'EMAIL_TOPIC_EXPLAIN'	=> 'Diese Nachricht wird als reiner Text verschickt, verwenden Sie daher kein HTML oder BBCode. Hinweise zu dem Thema werden der Nachricht automatisch hinzugefügt. Als Antwort-Adresse für die E-Mail wird Ihre E-Mail-Adresse angegeben.',
+	'EMAIL_TOPIC_EXPLAIN'	=> 'Hinweise zu dem Thema werden der Nachricht automatisch hinzugefügt. Als Antwort-Adresse für die E-Mail wird Ihre E-Mail-Adresse angegeben.',
 	'EMPTY_ADDRESS_EMAIL'	=> 'Sie müssen eine gültige E-Mail-Adresse für den Empfänger angeben.',
 	'EMPTY_MESSAGE_EMAIL'	=> 'Sie müssen eine Nachricht angeben, die versendet werden soll.',
 	'EMPTY_MESSAGE_IM'		=> 'Sie müssen eine Nachricht angeben, die versendet werden soll.',
@@ -105,7 +105,7 @@ $lang = array_merge($lang, array(
 
 	'MORE_THAN'				=> 'Mehr als',
 
-	'NO_EMAIL'				=> 'Sie sind nicht berechtigt, eine E-Mail an diesen Benutzer zu senden.',
+	'NO_EMAIL'				=> 'Sie sind nicht berechtigt, eine E-Mail an diesen Benutzer zu senden. Melden Sie sich an.',
 	'NO_VIEW_USERS'			=> 'Sie sind nicht berechtigt, die Mitgliederliste oder Profile anzusehen.',
 
 	'ORDER'					=> 'Sortierung',

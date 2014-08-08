@@ -47,10 +47,20 @@
 		 -o-transition: all .8s linear;
 			transition: all .8s linear;
 	}
+  h1{
+    color: #000080;
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  a, a:hover{
+    color: #000080;
+  }
 	p{
+    padding-top: 0px;
 		font-size: 16px;
 		line-height: 23px;
-		color: #000;
+		color: #000080;
 		padding: 7px;
 		text-align: center;
 		margin-top: 4px;
@@ -60,7 +70,7 @@
 		 -o-transition: all .8s linear;
 			transition: all .8s linear;
 	}
-	p.highs{
+	p.highs, h1.highs{
 		background: #FFDB01;
 		color: #000;
 	-webkit-transition: all .8s linear;
@@ -125,43 +135,43 @@
 			<article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=1">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-red.gif">
-					<p>Klassikforum:<br />sagen Sie's uns, fragen Sie uns</p>
+					<h1>Klassikforum:</h1><p>sagen Sie's uns, fragen Sie uns</p>
 				</a>
 			</article>
 			<article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=15">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-yellow.gif">
-					<p>Freizeit mit Klassik:<br />wer, mit wem, wohin?</p>
+					<h1>Freizeit mit Klassik:</h1><p>wer, mit wem, wohin?</p>
 				</a>
 			</article>
 			<article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=12">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-green.gif">
-					<p>Musikunterricht:<br />Übung macht den Meister</p>
+					<h1>Musikunterricht:</h1><p>Übung macht den Meister</p>
 				</a>
 			</article>
       <article style="opacity: 1;" class="text-center beethoven">
         <a href="{U_INDEX}">
           <img id="beethoven_img" class="img-responsive" alt="" title="" src="startpage/beethoven-1.jpg">
-          <p>Musikersuche/-profil:<br />für alle Anlässe(kommt in kürze)</p>
+          <h1>Musikersuche/-profil:</h1><p>für alle Anlässe(kommt in kürze)</p>
         </a>
       </article>
 			<article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=14">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-darkblue.gif">
-					<p>Tickets:<br /> tauschen Sie, kaufen Sie</p>
+					<h1>Tickets:</h1><p>tauschen Sie, kaufen Sie</p>
 				</a>
 			</article>
       <article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=13">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-brown.gif">
-					<p>Musikinstrumente:<br /> hier spielt die Musik</p>
+					<h1>Musikinstrumente:</h1><p>hier spielt die Musik</p>
 				</a>
 			</article>
       <article style="opacity: 1;" class="text-center auge">
 				<a href="./viewforum.php?f=87">
 					<img class="img-responsive" alt="" title="" src="startpage/auge-lightblue.gif">
-					<p>Noten, Musikbücher:<br /> Musikflohmarkt</p>
+					<h1>Noten, Musikbücher:</h1><p>Musikflohmarkt</p>
 				</a>
 			</article>
 		</div>
@@ -197,7 +207,8 @@
 			$('article.auge').css('opacity','0.3');
       $('article.beethoven').css('opacity','0.3');
 			$(this).css('opacity','1');
-			$(this).find('p').addClass('highs');
+// 			$(this).find('p').addClass('highs');
+//       $(this).find('h1').addClass('highs');
       var img_name =   $(this).find('img').attr("src");
       img_name = img_name.substring(0, img_name.length-4);
       $(this).find('img').attr("src", img_name + "-anim.gif");
@@ -205,19 +216,20 @@
 		$('article.auge').mouseleave(function(){
 			$('article.auge').css('opacity','1');
       $('article.beethoven').css('opacity','1');
-			$('p').removeClass('highs');
+// 			$('p').removeClass('highs');
+//       $('h1').removeClass('highs');
       var img_name =   $(this).find('img').attr("src");
       img_name = img_name.substring(0, img_name.length-9);
       $(this).find('img').attr("src", img_name + ".gif");
 		})
     $('article.beethoven').mouseenter(function(){
       $('article.auge').css('opacity','0.3');
-      $(this).find('p').addClass('highs');
+//       $(this).find('p').addClass('highs');
       $('#beethoven_img').attr('src','startpage/beethoven-3.jpg');
     })
     $('article.beethoven').mouseleave(function(){
       $('article.auge').css('opacity','1');
-      $('p').removeClass('highs');
+//       $('p').removeClass('highs');
       $('#beethoven_img').attr('src','startpage/beethoven-1.jpg');
     })
 
