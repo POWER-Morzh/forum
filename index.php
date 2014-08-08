@@ -144,7 +144,7 @@ $template->assign_vars(array(
 page_header($user->lang['INDEX']);
 
 $template->set_filenames(array(
-	'body' => 'index_body.html')
+	'body' => 'startpage.html')
 );
 
 page_footer();

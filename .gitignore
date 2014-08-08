@@ -17,6 +17,7 @@ RemoteSystemsTempFiles
 .settings
 .cproject
 .project
+.buildpath
 
 # Netbeans
 nbproject
@@ -35,6 +36,9 @@ lib
 
 # Heavy visualisation files
 *.vtk
+
+# forum
+cache/*
 
 # Hidden due to licencing or otherwise
 ml_login_data.mat
