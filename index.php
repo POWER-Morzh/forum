@@ -143,8 +143,13 @@ $template->assign_vars(array(
 // Output page
 page_header($user->lang['INDEX']);
 
+if(isset($_GET['i_am_admin'])) {
+  $startpage = 'index_body.html';
+} else {
+  $startpage = 'startpage.html'; 
+}
 $template->set_filenames(array(
-	'body' => 'startpage.html')
+	'body' => $startpage)
 );
 
 page_footer();

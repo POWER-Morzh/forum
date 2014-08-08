@@ -40,7 +40,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACTIVE_TOPICS'			=> 'Aktive Themen',
-	'ANNOUNCEMENTS'			=> 'Bekanntmachungen',
+	'ANNOUNCEMENTS'			=> 'Infos',
 
 	'FORUM_PERMISSIONS'		=> 'Berechtigungen in diesem Forum',
 
