@@ -390,6 +390,10 @@ if ($user->data['is_registered'])
 		}
 	}
 }
+if($forum_data['enable_city_filter']) {
+	$sql_array['LEFT_JOIN'][] = array('FROM' => array(CITY_TABLE => 'cityt'), 'ON' => 'cityt.city_id = t.city_id');
+	$sql_array['SELECT'] .= ', cityt.city_name AS city_name';
+}
 
 if ($forum_data['forum_type'] == FORUM_POST)
 {
@@ -683,6 +687,11 @@ if (sizeof($topic_list))
 		$posts_unapproved = ($row['topic_approved'] && $row['topic_replies'] < $row['topic_replies_real'] && $auth->acl_get('m_approve', $topic_forum_id)) ? true : false;
 		$u_mcp_queue = ($topic_unapproved || $posts_unapproved) ? append_sid("{$phpbb_root_path}mcp.$phpEx", 'i=queue&amp;mode=' . (($topic_unapproved) ? 'approve_details' : 'unapproved_posts') . "&amp;t=$topic_id", true, $user->session_id) : '';
 
+		//-- mod : Filter by Cities ------------------------------------------------------------
+		//-- add
+		$topic_city_id = $row['city_id'];
+		//-- fin mod : Filter by Cities --------------------------------------------------------
+		
 		// Send vars to template
 		$template->assign_block_vars('topicrow', array(
 			'FORUM_ID'					=> $topic_forum_id,
@@ -703,6 +712,11 @@ if (sizeof($topic_list))
 			'VIEWS'				=> $row['topic_views'],
 			'TOPIC_TITLE'		=> censor_text($row['topic_title']),
 			'TOPIC_TYPE'		=> $topic_type,
+			
+//-- mod : Filter by Cities ------------------------------------------------------------
+//-- add
+			'CITY'   => $row['city_name'],
+//-- fin mod : Filter by Cities --------------------------------------------------------
 
 			'TOPIC_FOLDER_IMG'		=> $user->img($folder_img, $folder_alt),
 			'TOPIC_FOLDER_IMG_SRC'	=> $user->img($folder_img, $folder_alt, false, '', 'src'),

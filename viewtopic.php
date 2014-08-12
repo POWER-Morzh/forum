@@ -643,7 +643,7 @@ $template->assign_vars(array(
 	'TOPIC_TITLE' 	=> $topic_data['topic_title'],
 //-- mod : Filter by Cities ------------------------------------------------------------
 //-- add
-  'CITY'   => $city_name,
+	'CITY'   => $city_name,
 //-- fin mod : Filter by Cities --------------------------------------------------------
 	'TOPIC_POSTER'	=> $topic_data['topic_poster'],
 

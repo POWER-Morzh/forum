@@ -168,7 +168,7 @@
 		<li class="row<!-- IF topicrow.S_ROW_COUNT is even --> bg1<!-- ELSE --> bg2<!-- ENDIF --><!-- IF topicrow.S_POST_GLOBAL --> global-announce<!-- ENDIF --><!-- IF topicrow.S_POST_ANNOUNCE --> announce<!-- ENDIF --><!-- IF topicrow.S_POST_STICKY --> sticky<!-- ENDIF --><!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
 			<dl class="icon" style="background-image: url({topicrow.TOPIC_FOLDER_IMG_SRC}); background-repeat: no-repeat;">
 				<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}"><!-- IF topicrow.S_UNREAD_TOPIC -->
-				<a href="{topicrow.U_NEWEST_POST}"><i class="fa fa-file"></i></a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>						
+				<a href="{topicrow.U_NEWEST_POST}"><i class="fa fa-file"></i></a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}<!-- IF S_ENABLE_CITY_FILTER and topicrow.S_TOPIC_TYPE != 3 and topicrow.S_TOPIC_TYPE != 2 -->, {topicrow.CITY}<!-- ENDIF --></a>						
 				<!-- IF topicrow.S_POSTS_UNAPPROVED -->
 				<a title="{L_POSTS_UNAPPROVED}" href="{topicrow.U_MCP_QUEUE}"><i class="icon-help-circled-alt ic-unaproved"></i></a><!-- ENDIF -->
 				<!-- IF topicrow.S_TOPIC_UNAPPROVED -->
